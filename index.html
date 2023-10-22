@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Victorian Road Crashes App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Marker cluster JavaScript code -->
+    <script type="text/javascript"
+        src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Plotly library for bar chart-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <!-- highcharts.js library for line chart-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script> <!--to disable accessibility warning in js code-->
+
+    <!-- Marker cluster CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+      <!-- Header -->
+      <div class="row">
+          <div class="col-xs-12">
+              <header>
+                  <h1>Victorian Road Accidents 2006 to 2020</h1>
+              </header>
+          </div>
+      </div>
+
+      <!-- Purpose of Webpage -->
+      <div class="row">
+        <div class="col-md-6 text-left">
+            <div class="purpose">
+                <p>The underlying data for these visualisations have been sourced from the DATA VIC Website.
+                  The time period covered is from the 1/1/2006 to 1/11/2020 inclusive.</p>
+            </div>
+        </div>
+
+        <!-- URL Button (Top Right) -->
+        <div class="col-md-4 text-right">
+            <div class="url-button">
+                <a href="https://discover.data.vic.gov.au/dataset/crash-stats-data-extract" target="_blank" class="btn btn-primary">
+                    Visit DATA VIC Website For Data Resources
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Maps and Charts container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Map and Line Chart Container -->
+            <div class="col-md-6">
+                <!-- Cluster Map Container -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map-title">Road Accidents By Location</div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+                
+                <!-- Map2 Chart Container -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="map2-title">Road Accidents By Locality Type</div>
+                        <div class="chart" id="map2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Chart and Line Chart Container -->
+            <div class="col-md-6">
+                <!-- Bar with Filter Container -->
+                <div class="row"></div>
+                    <div class="col-md-12"></div>
+                        <div id="bar-chart-title">Road Accidents By Category</div>
+                        <div class="well">
+                            <h5>Choose which <b><u>measure</u></b> and <b><u>year</u></b> you would like to view:</h5>
+                            <select id="selDatasetFeat" onchange="optionChanged(this.value)"></select>
+                            <select id="selDatasetYear" onchange="optionChanged(this.value)"></select>
+                        </div>
+                    <div class="col-md-12"></div>
+                        <div class="chart" id="bar"></div>
+                <div class="row"></div>
+                    <div class="col-md-12"></div>        
+                    <div id="line-chart-title">Road Accidents Over Time</div>
+                    <div class="chart" id="LineChart"></div>
+            </div>
+        </div>
+    </div>
+  
+
+    <!-- Our JavaScript -->
+    <script type="text/javascript" src="static/cluster.js"></script>
+    <script type="text/javascript" src="static/linecharts.js"></script>
+    <script type="text/javascript" src="./static/chartsfilter.js"></script>
+    <script type="text/javascript" src="./static/mapcircles.js"></script>
+</body>
+</html>
